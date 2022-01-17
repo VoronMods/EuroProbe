@@ -1,0 +1,52 @@
+From inductive to Euclid:
+
+Changes in printer.cfg 
+
+Add:
+[include euclid.cfg]
+
+[force_move]
+enable_force_move: true
+
+Octopus: after the swap Inductive for Euclid endstop status is Triggered, you need to change to ^PG15 (original PG15)
+
+##################
+# 	Probe
+##################
+[probe]
+pin: ^PG15
+
+x_offset: 0
+y_offset: 22.5
+z_offset: 8.0 #0 for Inductive Probe
+speed: 5 #30.0 #20.0 for Inductive Probe
+samples: 2 #1 for Inductive Probe
+samples_result: average
+sample_retract_dist: 10.0 #original 3.0 with inductive probe
+samples_tolerance: 0.0075 #0.05 was for Inductive Probe
+samples_tolerance_retries: 3
+
+Set z_offset: to 8mm (it is the distance from the tip of your nozzle to the tip of the moron switch)
+
+
+[z_tilt]
+#only changed field here
+
+speed: 150 #original 200
+horizontal_move_z: 10 #orignal 20 with inductive probe
+retries: 5
+retry_tolerance: 0.007
+
+Add to bed_mesh if you bet error in hightmap calibration
+[bed_mesh]
+horizontal_move_z: 20
+
+Changes in euclid.cfg 
+
+For trident, change at the end of the file QUAD_GENTRY_LEVEL to: Z_TILT_ADJUST 
+[gcode_macro Z_TILT_ADJUST]
+rename_existing:    _Z_TILT_ADJUST
+gcode:
+  M401                           ; deploy Euclid Probe if needed
+  _Z_TILT_ADJUST                       ; check bed level
+  M402                           ; dock Euclid Probe 
