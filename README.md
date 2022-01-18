@@ -10,8 +10,7 @@ To some degree, compatible with both mounting and dock systems.
 
 ![PIC](Images/PIC_12.png)
 
-## Klipper plugin for a self calibrating Z offset, useful if you have few spring steel sheets with different thickness, this plugin will adjust every time to your surface/build plate automatically, no need for manual Z offset.
-https://github.com/protoloft/klipper_z_calibration
+## Klipper plugin for a self calibrating Z offset, useful if you have few spring steel sheets with different thickness, this plugin will adjust every time to your surface/build plate automatically, no need for manual Z offset https://github.com/protoloft/klipper_z_calibration
 
 
 This is the Euclid Probe moded for EU as the original magnets and hardware are non standard and not obtainable in EU, just in US.
